@@ -6,7 +6,7 @@
 #    By: vinguyen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/22 23:04:48 by vinguyen          #+#    #+#              #
-#    Updated: 2020/02/23 03:07:47 by vinguyen         ###   ########.fr        #
+#    Updated: 2020/02/23 03:13:18 by vinguyen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ on_data()
 This function will take in the data from the StreamListener.
 
 on_error()
-This function will print the error if there is an error from streaming.
+This function will print the error if there is an error from streaming. Twitter Twitter API has rate limits, meaning that you have a limited amount of twitter scraping. If you keep on ignoring the 420 message, Twitter will eventually block you from accessing this information.
 """
 
 class TwitterListener(StreamListener):
@@ -80,6 +80,9 @@ class TwitterListener(StreamListener):
         return True
 
     def on_error(self, status):
+        if status == 420:
+            #Returning False on data method in case rate limit occurs.
+            return False
         print(status)
 
 if __name__ == "__main__":
