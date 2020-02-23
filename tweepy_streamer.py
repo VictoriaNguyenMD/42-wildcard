@@ -6,7 +6,7 @@
 #    By: vinguyen <vinguyen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/22 23:04:48 by vinguyen          #+#    #+#              #
-#    Updated: 2020/02/23 06:02:23 by vinguyen         ###   ########.fr        #
+#    Updated: 2020/02/23 06:29:40 by vinguyen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -128,7 +128,7 @@ if __name__ == "__main__":
     fetched_tweets_filename = "tweets.json"
     
     twitter_client = TwitterClient()
-    print(twitter_client.get_tweets_in_location("coronavirus", "30.5928,114.3055,50km", 1))
+    print(twitter_client.get_tweets_in_location("coronavirus", "30.5928,114.3055,50km", 1000))
     #twitter_streamer = TwitterStreamer()
    # twitter_streamer.stream_tweets(fetched_tweets_filename, hash_tag_list)
 
