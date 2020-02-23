@@ -1,5 +1,6 @@
 
 ## What is Wildcard?
+Wildcard is a project that allows you to pursue a topic of interest to gain XP within the 42 program. It should take about 50 hours to complete, including the GitHub and environment set-up.
 
 <!-- BACKGROUND INFORMATION -->
 ## Introduction to Web Scraping in Healthcare 
@@ -12,9 +13,11 @@ As a result, web scraping is a way to quickly obtain data from people, such as c
 
 Twitter, amongst many websites, is an excellent platform to display one's opinion toward a subject in an unbiased, natural manner. Since this social media platform is easy to access and public, it is a gold mine for extracting data, especially in terms of surveying public opinion about a particular healthcare product. 
 
-In this project, we will scrape Twitter to create a tweet visualization and sentiment analysis to analyze healthcare-related Tweets using Python. 
+## What is the Purpose of This Project?
 
-## Utilizing a Twitter Scraper to Analyze 
+This Python project will use Tweepy Library and Twitter API tools to scrape Twitter tweets in order to create a tweet visualization and sentiment analysis of a healthcare-related topic. After discovering how BlueDot used web scraping to quickly assess the potential outbreak of coronavairus, I became more interested in the applications of data mining and web scraping from nontraditional sources. This proect therefore scrapes Twitter tweets, analyzes the emotional state of the collected data, and outputs a graphical display. 
+
+## Utilizing a Twitter Scraper to Analyze Healthcare Data
 
 In order to start scraping information from Twitter, you need a tool that enables Python to communicate with the Twitter platform. There are many packages and libraries that can bridge the conenction from code to the plaftform, but two particular tools in mind are BeautifulSoup and Tweepy. These tools are useful for webscraping and can extract tweets. 
 
