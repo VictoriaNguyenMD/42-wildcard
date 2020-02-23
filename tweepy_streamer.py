@@ -6,7 +6,7 @@
 #    By: vinguyen <vinguyen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/22 23:04:48 by vinguyen          #+#    #+#              #
-#    Updated: 2020/02/23 05:23:45 by vinguyen         ###   ########.fr        #
+#    Updated: 2020/02/23 05:55:32 by vinguyen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,6 @@ from tweepy import API
 from tweepy import Cursor
 
 import twitter_credentials
-import pandas as pd
-
 """
 A Twitter Client class will contain multiple functions that can be used via a Twitter API object. The object has multiple functions listed in the API documentation that can obtain specified information from Twitter.
 
@@ -55,14 +53,6 @@ class TwitterClient():
             home_timeline_tweets.append(tweet)
         return home_timeline_tweets
 
-    def get_saved_searches(self, num_searches):
-        searches = []
-        df = pd.DataFrame(self.twitter_client.saved_searches)
-        df.to_json(orient="records")
-        for search in df:
-            searches.append(search)
-        return searches
-    
     def get_tweets_in_location(self, query: str, geocode_input: str, num_tweets: int):
         tweets = []
         for tweet in Cursor(self.twitter_client.search, q=query, geocode=geocode_input).items(num_tweets):
@@ -138,7 +128,7 @@ if __name__ == "__main__":
     fetched_tweets_filename = "tweets.json"
     
     twitter_client = TwitterClient()
-    print(twitter_client.get_saved_searches(1))
+    print(twitter_client.get_tweets_in_location("coronavirus", "30.5928,114.3055,50km", 1))
     #twitter_streamer = TwitterStreamer()
    # twitter_streamer.stream_tweets(fetched_tweets_filename, hash_tag_list)
 
