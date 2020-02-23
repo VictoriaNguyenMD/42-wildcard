@@ -52,9 +52,14 @@ To analyze tweets, you need to install pandas and NumPy. Pandas is a data manipu
 
 ### Set-Up
 
-`pip install tweepy`
-`pip install pandas`
-`pip install numpy`
+Updating Python
+`brew update`
+`brew upgrade python`
+
+Installing Packages
+`pip3 install tweepy`
+`pip3 install pandas`
+`pip3 install numpy`
 
 ### API Keys
 In the `twitter_credentials.py` file, replace the values inside the "" with your specific Twitter App tokens and keys. This wil contain variables that contain the user credentials to access Twitter API.
