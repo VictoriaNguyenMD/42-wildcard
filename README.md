@@ -1,4 +1,4 @@
-<!-- ABOUT -->
+
 ## What is Wildcard?
 
 <!-- BACKGROUND INFORMATION -->
@@ -27,6 +27,8 @@ The particular library that we are going to use for this product is Tweepy. This
 ## Project Outline: 
 
 **1. Stream Live Tweets**
+To stream live tweets, we need to first develop a Twitter application to access Twitter APIs using [http://apps.twitter.com/](http://apps.twitter.com/). We will obtain 2 keys (API key and API secret key) and 2 tokens (access token and access token secret) to have a unique identification to authenticate each API request. We will then import a StreamListener and OAuthHandler to authenticate the access and listen to live tweets. Running the code will output a dictionary for the tweets is a JSON file format.
+[Streaming Live Tweets](src/streaming.gif)
 
 **2. Cursor and Pagination**
 
@@ -40,23 +42,50 @@ The particular library that we are going to use for this product is Tweepy. This
 ## Getting Started
 
 ### Clone
-`git clone 
+`git clone https://github.com/VictoriaNguyenMD/42-wildcard.git`
 
 ### Set-Up
+**Brew Installation**
+For this project, we will use `pip` instead of `brew`; however, if you are a 42 student, make sure you have `brew` installed. If you do not have brew, message @Kane to receive the brew instructions. Otherwise, you can also install brew below:
+```
+mkdir $HOME/.brew && curl -fsSL https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.brew
+mkdir -p /tmp/.$(whoami)-brew-locks
+mkdir -p $HOME/.brew/var/homebrew
+ln -s /tmp/.$(whoami)-brew-locks $HOME/.brew/var/homebrew/locks
+export PATH="$HOME/.brew/bin:$PATH"
+brew update && brew upgrade
+```
+Afterwards, in your main directory, vim `.zshrc` and add the following lines:
+```
+mkdir -p /tmp/.$(whoami)-brew-locks
+export PATH="$HOME/.brew/bin:$PATH"
+```
+
+**Tweepy Insallation**
+`pip install tweepy`
+`pip install pandas`
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+
+<!-- ERROR MESSAGES -->
+1. `unable to import 'tweepy'pylint(import-error)`
+In your terminal, type `python -V` to obtain the version of your using VS Code, type CMD + SHIFT + P to open the Command Palette. Type `Python: Select Interpreter` and choose the python interpreter that appropriately matches the version you are using.
+
+2. `401` Status Code Error when running `python tweepy_streamer.py`
+You may have made a mistake in copying the Access Tokens from [apps.twitter.com](http://apps.twitter.com/). Regenerate an Access token and copy the token into the `twitter-credentials.py` file.
 
 <!-- CONTRIBUTING -->
 ## Contributing
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+2. Create your Feature Branch (`git checkout -b feature/DesignFeature`)
+3. Commit your Changes (`git commit -m 'Add some DesignFeature'`)
+4. Push to the Branch (`git push origin feature/DesignFeature`)
 5. Open a Pull Request
 
 #### References
 1. [Web Scraping](https://en.wikipedia.org/wiki/Web_scraping)
 2. [Tweet Visualization and Sentiment Analysis](https://www.youtube.com/watch?v=1gQ6uG5Ujiw)
+3. [Tweepy Documentation](http://docs.tweepy.org/en/latest/)
