@@ -3,15 +3,16 @@
 #                                                         :::      ::::::::    #
 #    tweepy_streamer.py                                 :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vinguyen <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: vinguyen <vinguyen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/22 23:04:48 by vinguyen          #+#    #+#              #
-#    Updated: 2020/02/23 03:13:18 by vinguyen         ###   ########.fr        #
+#    Updated: 2020/02/23 05:55:32 by vinguyen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 """
-StreamListener is a class from the tweepy module that allows us to listen to tweets. OAuthHandler is a class that will authenticate our Twitter API usage associated with the Twitter App. 
+StreamListener is a class from the tweepy module that allows us to listen to tweets. 
+OAuthHandler is a class that will authenticate our Twitter API usage associated with the Twitter App. 
 """
 from tweepy.streaming import StreamListener 
 from tweepy import OAuthHandler
@@ -20,7 +21,44 @@ from tweepy import API
 from tweepy import Cursor
 
 import twitter_credentials
+"""
+A Twitter Client class will contain multiple functions that can be used via a Twitter API object. The object has multiple functions listed in the API documentation that can obtain specified information from Twitter.
 
+To add more functions, checkout the Twitter API:
+http://docs.tweepy.org/en/latest/api.html#API.search
+"""
+# <----------- TWITTER CLIENT --------------->
+class TwitterClient():
+    def __init__(self, twitter_user = None):
+        self.auth = TwitterAuthenticator().authenticate_twitter_app()
+        self.twitter_client = API(self.auth)
+
+        self.twitter_user = twitter_user
+
+    def get_user_timeline_tweets(self, num_tweets):
+        tweets = []
+        for tweet in Cursor(self.twitter_client.user_timeline, id=self.twitter_user).items(num_tweets):
+            tweets.append(tweet)
+        return tweets
+
+    def get_friend_list(self, num_friends):
+        friend_list = []
+        for friend in Cursor(self.twitter_client.friends, id=self.twitter_user).items(num_friends):
+            friend_list.append(friend)
+        return friend_list
+
+    def get_home_timeline_tweets(self, num_tweets):
+        home_timeline_tweets = []
+        for tweet in Cursor(self.twitter_client.home_timeline).items(num_tweets):
+            home_timeline_tweets.append(tweet)
+        return home_timeline_tweets
+
+    def get_tweets_in_location(self, query: str, geocode_input: str, num_tweets: int):
+        tweets = []
+        for tweet in Cursor(self.twitter_client.search, q=query, geocode=geocode_input).items(num_tweets):
+            tweets.append(tweet)
+        return tweets
+        
 # <----------- TWITTER AUTHENTICATOR -------->
 class TwitterAuthenticator():
     def authenticate_twitter_app(self):
@@ -56,7 +94,7 @@ class TwitterStreamer():
 
 # <-------------- TWITTER STREAM LISTENER -------->
 """
-StdOutListener is our own Listener class that will inherit from the StreamListener. We will modify this class to contain functions that will override some functions in the StreamListener class. The two functions that we will override are on_data and on_error.
+TwitterListener is our own Listener class that will inherit from the StreamListener. We will modify this class to contain functions that will override some functions in the StreamListener class. The two functions that we will override are on_data and on_error.
 
 on_data()
 This function will take in the data from the StreamListener.
@@ -88,6 +126,9 @@ class TwitterListener(StreamListener):
 if __name__ == "__main__":
     hash_tag_list = ["coronavirus", "nCoV2019", "COVID-19", "wuhan virus"]
     fetched_tweets_filename = "tweets.json"
+    
+    twitter_client = TwitterClient()
+    print(twitter_client.get_tweets_in_location("coronavirus", "30.5928,114.3055,50km", 1))
+    #twitter_streamer = TwitterStreamer()
+   # twitter_streamer.stream_tweets(fetched_tweets_filename, hash_tag_list)
 
-    twitter_streamer = TwitterStreamer()
-    twitter_streamer.stream_tweets(fetched_tweets_filename, hash_tag_list)
