@@ -15,7 +15,7 @@ Twitter, amongst many websites, is an excellent platform to display one's opinio
 
 ## What is the Purpose of This Project?
 
-This Python project will use Tweepy Library and Twitter API tools to scrape Twitter tweets in order to create a tweet visualization and sentiment analysis of a healthcare-related topic. After discovering how BlueDot used web scraping to quickly assess the potential outbreak of coronavairus, I became more interested in the applications of data mining and web scraping from nontraditional sources. This proect therefore scrapes Twitter tweets, analyzes the emotional state of the collected data, and outputs a graphical display. 
+This Python project will use [Tweepy Library](https://www.tweepy.org/) and [Twitter API](http://docs.tweepy.org/en/latest/api.html#API.search) tools to scrape Twitter tweets in order to create a tweet visualization and sentiment analysis of a healthcare-related topic. After discovering how BlueDot used web scraping to quickly assess the potential outbreak of coronavairus, I became more interested in the applications of data mining and web scraping from nontraditional sources. This project therefore scrapes Twitter tweets, analyzes the emotional state of the collected data, and outputs a graphical display. 
 
 ## Utilizing a Twitter Scraper to Analyze Healthcare Data
 
@@ -37,9 +37,18 @@ To stream live tweets, we need to first develop a Twitter application to access 
 
 **2. Cursor and Pagination**
 
+To obtain tweets via search query, a cursor based pagination will be used to provide a record based on a unique identifier. A cursor acts as a pointer to the next record for the query. A Twitter client will be  used with the Twitter API's functions to query the results and a Cursor  will then facilitate in the retrieval of data. The data will then be returned in a list. 
+
+<img src="./media/cursor_pagination.png" alt="cursor_pagination.png"/>
+
 **3. Analyzing Tweet Data**
+To analyze tweets, you need to install pandas and NumPy. Pandas is a data manipulation tool in Python that will allow us to store the streamed tweets into a dataframe, which could then be used to analyze the data. NumPy is a numerical and mathematical library of Python that aids in data analysis and manipulation. The data obtained from streaming the tweets was extracted and placed into a dataframe for further analysis.
+
+<img src="./media/analyzed_tweet_data.png" alt="analyzed_tweet_data.png"/>
 
 **4. Visualizing Tweet Data**
+
+To visualize the data, we will then derive graphical outputs using the data frame obtained from analyzing the tweet. Using the NumPy and pandas, it is easy to manipulate the data (eg. average lengths of the tweets), 
 
 **5. Sentiment Analysis**
 
@@ -51,7 +60,14 @@ To stream live tweets, we need to first develop a Twitter application to access 
 
 ### Set-Up
 
-`pip install tweepy`
+Updating Python
+`brew update`
+`brew upgrade python`
+
+Installing Packages
+`pip3 install tweepy`
+`pip3 install pandas`
+`pip3 install numpy`
 
 ### API Keys
 In the `twitter_credentials.py` file, replace the values inside the "" with your specific Twitter App tokens and keys. This wil contain variables that contain the user credentials to access Twitter API.
@@ -62,6 +78,10 @@ ACCESS_TOKEN_SECRET = ""
 CONSUMER_KEY = ""  
 CONSUMER_SECRET = ""
 ```
+
+### Running the Code
+
+`python -W ignore tweepy-streamer.py`
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -77,6 +97,10 @@ In your terminal, type `python -V` to obtain the version of your using VS Code, 
 
 You may have made a mistake in copying the Access Tokens from [apps.twitter.com](http://apps.twitter.com/). Regenerate an Access token and copy the token into the `twitter-credentials.py` file.
 
+**Your installed Python is incomplete. Attempting to use lzma compression will result in Runtime Error**
+
+`brew reinstall xz` is suppoed to have lzma, such that when you use `import lzma`, there should be no errors. However, there is a warning when you run your python code. To silence the warning, run the code using `python -W ignore tweepy_stream.py` 
+
 <!-- CONTRIBUTING -->
 ## Contributing
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -91,3 +115,4 @@ Contributions are what make the open source community such an amazing place to b
 1. [Web Scraping](https://en.wikipedia.org/wiki/Web_scraping)
 2. [Tweet Visualization and Sentiment Analysis](https://www.youtube.com/watch?v=1gQ6uG5Ujiw)
 3. [Tweepy Documentation](http://docs.tweepy.org/en/latest/)
+4. [Python Environment](https://realpython.com/intro-to-pyenv/#why-use-pyenv)
