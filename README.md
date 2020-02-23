@@ -29,7 +29,7 @@ The particular library that we are going to use for this product is Tweepy. This
 **1. Stream Live Tweets**
 To stream live tweets, we need to first develop a Twitter application to access Twitter APIs using [http://apps.twitter.com/](http://apps.twitter.com/). We will obtain 2 keys (API key and API secret key) and 2 tokens (access token and access token secret) to have a unique identification to authenticate each API request. We will then import a StreamListener and OAuthHandler to authenticate the access and listen to live tweets. Running the code will output a dictionary for the tweets is a JSON file format.
 
-<img src="https://s4.gifyu.com/images/streaming.gif" width="400" height="400" />  
+<a href="https://gifyu.com/image/7FcF"><img src="https://s4.gifyu.com/images/streaming.gif" alt="streaming.gif" width="200" height="200" /></a>
 
 **2. Cursor and Pagination**
 
