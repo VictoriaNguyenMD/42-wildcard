@@ -48,26 +48,7 @@ To stream live tweets, we need to first develop a Twitter application to access 
 
 ### Set-Up
 
-**Tweepy Insallation**
-
 `pip install tweepy`
-
-**Brew Installation**
-
-For this project, we will use `pip` instead of `brew`; however, if you are a 42 student, make sure you have `brew` installed. If you do not have brew, message @Kane to receive the brew instructions. Otherwise, you can also install brew below:
-```
-mkdir $HOME/.brew && curl -fsSL https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.brew
-mkdir -p /tmp/.$(whoami)-brew-locks
-mkdir -p $HOME/.brew/var/homebrew
-ln -s /tmp/.$(whoami)-brew-locks $HOME/.brew/var/homebrew/locks
-export PATH="$HOME/.brew/bin:$PATH"
-brew update && brew upgrade
-```
-Afterwards, in your main directory, vim `.zshrc` and add the following lines:
-```
-mkdir -p /tmp/.$(whoami)-brew-locks
-export PATH="$HOME/.brew/bin:$PATH"
-```
 
 ### API Keys
 In the `twitter_credentials.py` file, replace the values inside the "" with your specific Twitter App tokens and keys. This wil contain variables that contain the user credentials to access Twitter API.
