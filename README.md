@@ -29,7 +29,7 @@ The particular library that we are going to use for this product is Tweepy. This
 **1. Stream Live Tweets**
 To stream live tweets, we need to first develop a Twitter application to access Twitter APIs using [http://apps.twitter.com/](http://apps.twitter.com/). We will obtain 2 keys (API key and API secret key) and 2 tokens (access token and access token secret) to have a unique identification to authenticate each API request. We will then import a StreamListener and OAuthHandler to authenticate the access and listen to live tweets. Running the code will output a dictionary for the tweets is a JSON file format.
 
-[Streaming Live Tweets](media/streaming.gif)
+<img src="https://s4.gifyu.com/images/streaming.gif" width="400" height="400" />  
 
 **2. Cursor and Pagination**
 
@@ -47,7 +47,11 @@ To stream live tweets, we need to first develop a Twitter application to access 
 
 ### Set-Up
 
-**Brew Installation**
+1. **Tweepy Insallation**
+
+`pip install tweepy`
+
+2. **Brew Installation**
 
 For this project, we will use `pip` instead of `brew`; however, if you are a 42 student, make sure you have `brew` installed. If you do not have brew, message @Kane to receive the brew instructions. Otherwise, you can also install brew below:
 ```
@@ -63,10 +67,6 @@ Afterwards, in your main directory, vim `.zshrc` and add the following lines:
 mkdir -p /tmp/.$(whoami)-brew-locks
 export PATH="$HOME/.brew/bin:$PATH"
 ```
-
-**Tweepy Insallation**
-
-`pip install tweepy`
 
 ### API Keys
 In the `twitter_credentials.py` file, replace the values inside the "" with your specific Twitter App tokens and keys. This wil contain variables that contain the user credentials to access Twitter API.
@@ -85,11 +85,9 @@ CONSUMER_SECRET = ""
 
 ## Error Messages
 1. **`unable to import 'tweepy'pylint(import-error)`**
-
-In your terminal, type `python -V` to obtain the version of your using VS Code, type CMD + SHIFT + P to open the Command Palette. Type `Python: Select Interpreter` and choose the python interpreter that appropriately matches the version you are using.
+In your terminal, type `python -V` to obtain the version of your using VS Code, type CMD + SHIFT + P to open the Command Palette. Type `Python: Select Interpreter` and choose the  python interpreter that appropriately matches the version you are using.
 
 2. **`401` Status Code Error when running `python tweepy_streamer.py`**
-
 You may have made a mistake in copying the Access Tokens from [apps.twitter.com](http://apps.twitter.com/). Regenerate an Access token and copy the token into the `twitter-credentials.py` file.
 
 <!-- CONTRIBUTING -->
