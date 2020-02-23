@@ -6,7 +6,7 @@
 #    By: vinguyen <vinguyen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/22 23:04:48 by vinguyen          #+#    #+#              #
-#    Updated: 2020/02/23 06:29:40 by vinguyen         ###   ########.fr        #
+#    Updated: 2020/02/23 13:18:09 by vinguyen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,9 @@ from tweepy import API
 from tweepy import Cursor
 
 import twitter_credentials
+import numpy as np
+import pandas as pd
+
 """
 A Twitter Client class will contain multiple functions that can be used via a Twitter API object. The object has multiple functions listed in the API documentation that can obtain specified information from Twitter.
 
@@ -34,7 +37,10 @@ class TwitterClient():
         self.twitter_client = API(self.auth)
 
         self.twitter_user = twitter_user
-
+        
+    def get_twitter_client_api(self):
+        return self.twitter_client
+        
     def get_user_timeline_tweets(self, num_tweets):
         tweets = []
         for tweet in Cursor(self.twitter_client.user_timeline, id=self.twitter_user).items(num_tweets):
@@ -53,6 +59,17 @@ class TwitterClient():
             home_timeline_tweets.append(tweet)
         return home_timeline_tweets
 
+    """
+    This function will stream a certain number of tweets based on the query and the input location.
+    
+    :param query item
+    :param latitude, longitude, radius (km)
+    :param number of tweets to scrape
+    :return a list of tweets in JSON format
+
+    Example
+    get_tweets_in_location("coronavirus", "30.5928,114.3055,50km", 1)
+    """
     def get_tweets_in_location(self, query: str, geocode_input: str, num_tweets: int):
         tweets = []
         for tweet in Cursor(self.twitter_client.search, q=query, geocode=geocode_input).items(num_tweets):
@@ -123,12 +140,31 @@ class TwitterListener(StreamListener):
             return False
         print(status)
 
+class TweetAnalyzer():
+    """
+    Functionality for analyzing and categorizing content from tweets.
+    """
+
+    """
+    Extracts text from each of the tweets and converts it into a dataframe
+    param: JSON format
+    """
+    def tweets_to_dataframe(self, tweets):
+        df = pd.DataFrame(data=[tweet.text for tweet in tweets], columns=["Tweets"])
+        df["id"] = np.array([tweet.id for tweet in tweets])
+        df["len"] = np.array([len(tweet.text) for tweet in tweets])
+        df["date"] = np.array([tweet.created_at for tweet in tweets])
+        df["source"] = np.array([tweet.source for tweet in tweets])
+        df["likes"] = np.array([tweet.favorite_count for tweet in tweets])
+        df["retweets"] = np.array([tweet.retweet_count for tweet in tweets])
+        return df
+        
 if __name__ == "__main__":
-    hash_tag_list = ["coronavirus", "nCoV2019", "COVID-19", "wuhan virus"]
-    fetched_tweets_filename = "tweets.json"
-    
+    tweet_analyzer = TweetAnalyzer()
     twitter_client = TwitterClient()
-    print(twitter_client.get_tweets_in_location("coronavirus", "30.5928,114.3055,50km", 1000))
-    #twitter_streamer = TwitterStreamer()
-   # twitter_streamer.stream_tweets(fetched_tweets_filename, hash_tag_list)
+    api = twitter_client.get_twitter_client_api()
+    
+    tweets = api.user_timeline(screen_name="BlueUps", count=10)
+    df = tweet_analyzer.tweets_to_dataframe(tweets) 
+    print(df.head(10))
 
