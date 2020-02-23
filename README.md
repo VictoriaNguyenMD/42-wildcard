@@ -15,7 +15,7 @@ Twitter, amongst many websites, is an excellent platform to display one's opinio
 
 ## What is the Purpose of This Project?
 
-This Python project will use Tweepy Library and Twitter API tools to scrape Twitter tweets in order to create a tweet visualization and sentiment analysis of a healthcare-related topic. After discovering how BlueDot used web scraping to quickly assess the potential outbreak of coronavairus, I became more interested in the applications of data mining and web scraping from nontraditional sources. This project therefore scrapes Twitter tweets, analyzes the emotional state of the collected data, and outputs a graphical display. 
+This Python project will use [Tweepy Library](https://www.tweepy.org/) and [Twitter API](http://docs.tweepy.org/en/latest/api.html#API.search) tools to scrape Twitter tweets in order to create a tweet visualization and sentiment analysis of a healthcare-related topic. After discovering how BlueDot used web scraping to quickly assess the potential outbreak of coronavairus, I became more interested in the applications of data mining and web scraping from nontraditional sources. This project therefore scrapes Twitter tweets, analyzes the emotional state of the collected data, and outputs a graphical display. 
 
 ## Utilizing a Twitter Scraper to Analyze Healthcare Data
 
@@ -37,10 +37,18 @@ To stream live tweets, we need to first develop a Twitter application to access 
 
 **2. Cursor and Pagination**
 
+To obtain tweets via search query, a cursor based pagination will be used to provide a record based on a unique identifier. A cursor acts as a pointer to the next record for the query. A Twitter client will be  used with the Twitter API's functions to query the results and a Cursor  will then facilitate in the retrieval of data. The data will then be returned in a list. 
+
+<img src="./media/cursor_pagination.png" alt="cursor_pagination.png"/>
+
 **3. Analyzing Tweet Data**
-To analyze tweets, you need to install pandas and NumPy. Pandas is a data manipulation tool in Python that will allow us to store the streamed tweets into a dataframe, which could then be used to analyze the data. NumPy is a numerical and mathematical library of Python that aids in data analysis and manipulation.
+To analyze tweets, you need to install pandas and NumPy. Pandas is a data manipulation tool in Python that will allow us to store the streamed tweets into a dataframe, which could then be used to analyze the data. NumPy is a numerical and mathematical library of Python that aids in data analysis and manipulation. The data obtained from streaming the tweets was extracted and placed into a dataframe for further analysis.
+
+<img src="./media/analyzed_tweet_data.png" alt="analyzed_tweet_data.png"/>
 
 **4. Visualizing Tweet Data**
+
+To visualize the data, we will then derive graphical outputs using the data frame obtained from analyzing the tweet. Using the NumPy and pandas, it is easy to manipulate the data (eg. average lengths of the tweets), 
 
 **5. Sentiment Analysis**
 
