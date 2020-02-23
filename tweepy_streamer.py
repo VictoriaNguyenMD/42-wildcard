@@ -6,7 +6,7 @@
 #    By: vinguyen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/22 23:04:48 by vinguyen          #+#    #+#              #
-#    Updated: 2020/02/23 03:13:18 by vinguyen         ###   ########.fr        #
+#    Updated: 2020/02/23 03:35:30 by vinguyen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,18 @@ from tweepy import API
 from tweepy import Cursor
 
 import twitter_credentials
+
+# <----------- TWITTER CLIENT --------------->
+class TwitterClient():
+    def __init__(self):
+        self.auth = TwitterAuthenticator().authenticate_twitter_app()
+        self.twitter_client = API(self.auth)
+    
+    def get_user_timeline_tweets(self, num_tweets):
+        tweets = []
+        for tweet in Cursor(self.twitter_client.user_timeline).items(num_tweets):
+            tweets.append(tweet)
+        return tweets
 
 # <----------- TWITTER AUTHENTICATOR -------->
 class TwitterAuthenticator():
@@ -56,7 +68,7 @@ class TwitterStreamer():
 
 # <-------------- TWITTER STREAM LISTENER -------->
 """
-StdOutListener is our own Listener class that will inherit from the StreamListener. We will modify this class to contain functions that will override some functions in the StreamListener class. The two functions that we will override are on_data and on_error.
+TwitterListener is our own Listener class that will inherit from the StreamListener. We will modify this class to contain functions that will override some functions in the StreamListener class. The two functions that we will override are on_data and on_error.
 
 on_data()
 This function will take in the data from the StreamListener.
@@ -88,6 +100,9 @@ class TwitterListener(StreamListener):
 if __name__ == "__main__":
     hash_tag_list = ["coronavirus", "nCoV2019", "COVID-19", "wuhan virus"]
     fetched_tweets_filename = "tweets.json"
+    
+    twitter_client = TwitterClient()
+    print(twitter_client.get_user_timeline_tweets(1))
+    #twitter_streamer = TwitterStreamer()
+   # twitter_streamer.stream_tweets(fetched_tweets_filename, hash_tag_list)
 
-    twitter_streamer = TwitterStreamer()
-    twitter_streamer.stream_tweets(fetched_tweets_filename, hash_tag_list)
