@@ -6,7 +6,7 @@
 #    By: vinguyen <vinguyen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/22 23:04:48 by vinguyen          #+#    #+#              #
-#    Updated: 2020/02/23 13:18:09 by vinguyen         ###   ########.fr        #
+#    Updated: 2020/02/23 15:36:17 by vinguyen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,6 +158,18 @@ class TweetAnalyzer():
         df["likes"] = np.array([tweet.favorite_count for tweet in tweets])
         df["retweets"] = np.array([tweet.retweet_count for tweet in tweets])
         return df
+
+class TweetVisualizer():
+    """
+    For visualizing the tweet data after the dataframe was created
+    """
+
+    """
+    Factors over several days (eg. Likes over several days)
+    """
+    pass
+    #def createTimeSeries(self):
+
         
 if __name__ == "__main__":
     tweet_analyzer = TweetAnalyzer()
