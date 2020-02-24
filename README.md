@@ -114,7 +114,7 @@ In your terminal, type `python -V` to obtain the version of your using VS Code, 
 
 You may have made a mistake in copying the Access Tokens from [apps.twitter.com](http://apps.twitter.com/). Regenerate an Access token and copy the token into the `twitter-credentials.py` file.
 
-**Your installed Python is incomplete. Attempting to use lzma compression will result in Runtime Error**
+**`Your installed Python is incomplete. Attempting to use lzma compression will result in Runtime Error`**
 
 `brew reinstall xz` is suppoed to have lzma, such that when you use `import lzma`, there should be no errors. However, there is a warning when you run your python code. To silence the warning, run the code using `python -W ignore tweepy_stream.py` 
 
