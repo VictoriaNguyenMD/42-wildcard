@@ -48,7 +48,9 @@ To analyze tweets, you need to install pandas and NumPy. Pandas is a data manipu
 
 **4. Visualizing Tweet Data**
 
-To visualize the data, we will then derive graphical outputs using the data frame obtained from analyzing the tweet. Using the NumPy and pandas, it is easy to manipulate the data (eg. average lengths of the tweets), 
+To visualize the data, we will then derive graphical outputs using the data frame obtained from analyzing the tweet. Using the NumPy and pandas, it is easy to manipulate the data and produce a visual display. Below is an example of the Twitter username @USUhealthsci's Likes vs. Retweets over several days.
+
+<img src="./media/USU_dataframe.png" alt="USU Data Frame"/> <img src="./media/USU_time_series_plot.png" alt="USU Time Series Plot"/>
 
 **5. Sentiment Analysis**
 
@@ -68,6 +70,7 @@ Installing Packages
 `pip3 install tweepy`
 `pip3 install pandas`
 `pip3 install numpy`
+`pip3 install matplotlib`
 
 ### API Keys
 In the `twitter_credentials.py` file, replace the values inside the "" with your specific Twitter App tokens and keys. This wil contain variables that contain the user credentials to access Twitter API.
@@ -111,8 +114,20 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/DesignFeature`)
 5. Open a Pull Request
 
+<!-- LICENSE -->
+## License
+
+[The MIT License (MIT)](https://choosealicense.com/licenses/mit/)
+Copyright © 2020
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 ### References
 1. [Web Scraping](https://en.wikipedia.org/wiki/Web_scraping)
-2. [Tweet Visualization and Sentiment Analysis](https://www.youtube.com/watch?v=1gQ6uG5Ujiw)
+2. [Tweet Visualization and Sentiment Analysis](https://www.youtube.com/watch?v=1gQ6uG5Ujiw) @vprusso
 3. [Tweepy Documentation](http://docs.tweepy.org/en/latest/)
 4. [Python Environment](https://realpython.com/intro-to-pyenv/#why-use-pyenv)
