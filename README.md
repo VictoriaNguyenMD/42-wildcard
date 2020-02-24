@@ -45,6 +45,7 @@ To obtain tweets via search query, a cursor based pagination will be used to pro
 <img src="./media/cursor_pagination.png" alt="cursor_pagination.png"/>
 
 **3. Analyzing Tweet Data**
+
 To analyze tweets, you need to install pandas and NumPy. Pandas is a data manipulation tool in Python that will allow us to store the streamed tweets into a dataframe, which could then be used to analyze the data. NumPy is a numerical and mathematical library of Python that aids in data analysis and manipulation. The data obtained from streaming the tweets was extracted and placed into a dataframe for further analysis.
 
 <img src="./media/analyzed_tweet_data.png" alt="analyzed_tweet_data.png"/>
@@ -68,17 +69,23 @@ To visualize the data, we will then derive graphical outputs using the data fram
 ### Set-Up
 
 Updating Python
+
 `brew update`
+
 `brew upgrade python`
 
 Installing Packages
+
 `pip3 install tweepy`
+
 `pip3 install pandas`
+
 `pip3 install numpy`
+
 `pip3 install matplotlib`
 
 ### API Keys
-In the `twitter_credentials.py` file, replace the values inside the "" with your specific Twitter App tokens and keys. This wil contain variables that contain the user credentials to access Twitter API.
+In the `twitter_credentials.py` file, replace the values inside the `""` with your specific Twitter App tokens and keys. This wil contain variables that contain the user credentials to access Twitter API.
 
 ```
 ACCESS_TOKEN = ""
@@ -89,7 +96,7 @@ CONSUMER_SECRET = ""
 
 ### Running the Code
 
-`python -W ignore tweepy-streamer.py`
+`python -W ignore tweepy_streamer.py`
 
 <!-- USAGE EXAMPLES -->
 ## Usage
