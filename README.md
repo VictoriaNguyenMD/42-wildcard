@@ -84,6 +84,8 @@ Installing Packages
 
 `pip3 install matplotlib`
 
+`pip3 install wordcloud`
+
 ### API Keys
 In the `twitter_credentials.py` file, replace the values inside the `""` with your specific Twitter App tokens and keys. This wil contain variables that contain the user credentials to access Twitter API.
 
@@ -138,7 +140,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-### References
+## References
 1. [Web Scraping](https://en.wikipedia.org/wiki/Web_scraping)
 2. [Tweet Visualization and Sentiment Analysis](https://www.youtube.com/watch?v=1gQ6uG5Ujiw) @vprusso
 3. [Tweepy Documentation](http://docs.tweepy.org/en/latest/)
