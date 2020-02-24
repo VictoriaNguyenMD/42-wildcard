@@ -50,7 +50,9 @@ To analyze tweets, you need to install pandas and NumPy. Pandas is a data manipu
 
 To visualize the data, we will then derive graphical outputs using the data frame obtained from analyzing the tweet. Using the NumPy and pandas, it is easy to manipulate the data and produce a visual display. Below is an example of the Twitter username @USUhealthsci's Likes vs. Retweets over several days.
 
-<img src="./media/USU_dataframe.png" alt="USU Data Frame"/> <img src="./media/USU_time_series_plot.png" alt="USU Time Series Plot"/>
+<img src="./media/USU_dataframe.png" alt="USU Data Frame"/> 
+
+<img src="./media/USU_time_series_plot.png" alt="USU Time Series Plot"/>
 
 **5. Sentiment Analysis**
 
