@@ -134,10 +134,16 @@ You may have made a mistake in copying the Access Tokens from [apps.twitter.com]
 `brew reinstall xz` is suppoed to have lzma, such that when you use `import lzma`, there should be no errors. However, there is a warning when you run your python code. To silence the warning, run the code using `python -W ignore tweepy_stream.py` 
 
 **`tweepy.error.TweepError: Twitter error response: status code = 429`**
+
 The 429 code is returned when a request cannot be served due to reaching the application’s rate limit. You have to wait for the limit to rese. According to the [Twitter Webstite](https://developer.twitter.com/en/docs/basics/rate-limiting), there are two initial buckets available for GET requests: 15 calls every 15 minutes, and 180 calls every 15 minutes.
 
 **`import` error**
+
 If there is an importation error, at the top of the code, write `import ______` with teh `______` being the missing import library.
+
+**Code keeps on running and doesn't stop**
+
+The listener is listening for the tweets. You can type `CTRL + C`. If this does not work, refer to this aritcle on [how to force quit via terminal](https://www.hongkiat.com/blog/force-quit-mac-app/).
 
 <!-- REFELCTION -->
 ## Reflection
