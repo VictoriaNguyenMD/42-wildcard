@@ -2,6 +2,7 @@ from tweepy import Cursor
 from tweepy import API
 
 from wordcloud import WordCloud
+from textblob import TextBlob
 
 import matplotlib.pyplot as plt
 import numpy as np

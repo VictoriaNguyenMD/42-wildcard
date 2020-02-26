@@ -64,6 +64,16 @@ Below is an example of a Word Cloud developed from the query "COVID19."
 
 **5. Sentiment Analysis [Bonus]**
 
+To obtain the sentiment analysis, we are going to use TextBlob, which is a natural language processing framework trained to analyze sentiment of text.
+
+After a coronavirus query was conducted, below is an example of the text that received a positive sentiment:
+
+<img src="./media/sentimental_trump_tweet.png" alt="Trump Tweet about Coronavirus"/>
+
+Below is an example of the terminal sentiment analysis. The tweet is on id #1.
+
+<img src="./media/sentimental_terminal_analysis.png" alt="Terminal Analysis of Coronavirus Tweet Queries"/>
+
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -89,6 +99,8 @@ Installing Packages
 `pip3 install matplotlib`
 
 `pip3 install wordcloud`
+
+`pip3 install textblob`
 
 ### API Keys
 In the `twitter_credentials.py` file, replace the values inside the `""` with your specific Twitter App tokens and keys. This wil contain variables that contain the user credentials to access Twitter API.
@@ -119,8 +131,11 @@ You may have made a mistake in copying the Access Tokens from [apps.twitter.com]
 
 `brew reinstall xz` is suppoed to have lzma, such that when you use `import lzma`, there should be no errors. However, there is a warning when you run your python code. To silence the warning, run the code using `python -W ignore tweepy_stream.py` 
 
-**tweepy.error.TweepError: Twitter error response: status code = 429**
+**`tweepy.error.TweepError: Twitter error response: status code = 429`**
 The 429 code is returned when a request cannot be served due to reaching the application’s rate limit. You have to wait for the limit to rese. According to the [Twitter Webstite](https://developer.twitter.com/en/docs/basics/rate-limiting), there are two initial buckets available for GET requests: 15 calls every 15 minutes, and 180 calls every 15 minutes.
+
+**`import` error**
+If there is an importation error, at the top of the code, write `import ______` with teh `______` being the missing import library.
 
 <!-- REFELCTION -->
 ## Reflection

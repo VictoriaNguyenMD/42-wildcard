@@ -6,7 +6,7 @@
 #    By: vinguyen <vinguyen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/22 23:04:48 by vinguyen          #+#    #+#              #
-#    Updated: 2020/02/25 23:57:44 by vinguyen         ###   ########.fr        #
+#    Updated: 2020/02/26 00:42:31 by vinguyen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ from tweet_visualizer import TweetVisualizer
 from tweepy_authenticator import TwitterAuthenticator
 from tweepy_client import TwitterClient
 from tweet_analyzer import TweetAnalyzer
+
+import re
+import numpy as np
 
 # <------------ TWITTER STREAMER ------------>
 """
@@ -73,7 +76,7 @@ class TwitterListener(StreamListener):
             #Returning False on data method in case rate limit occurs.
             return False
         print(status)
-        
+            
 if __name__ == "__main__":
 
     # Example Code #1: Using Streamer, Listener, Authenticator. Unlimited # of Tweets 
@@ -188,5 +191,21 @@ if __name__ == "__main__":
     # Example Code #8: Word Cloud plot using function
     # This code will use TweetVisualizer function to graph the plot
     
+    """
     tweet_visualizer = TweetVisualizer()
     tweet_visualizer.plot_word_cloud("COVID19", remove=["COVID19"])
+    """
+
+    # Example Code #9: Analyzing tweets using TextBlob
+    twitter_client = TwitterClient()
+    tweet_analyzer = TweetAnalyzer()
+
+    api = twitter_client.get_twitter_client_api()
+
+    tweets = api.search(q="coronavirus", count=100)
+
+    df = tweet_analyzer.tweets_to_dataframe(tweets)
+    df["sentiment"] = np.array([tweet_analyzer.analyze_sentiment(tweet) for tweet in df["Tweets"]])
+
+    print(df.head(10))
+     
