@@ -116,7 +116,23 @@ CONSUMER_SECRET = ""
 
 `python -W ignore tweepy_streamer.py`
 
-Within this `tweepy_streamer.py`, you can uncomment multiple lines and import the appropriate library to text other example code.
+Within this `tweepy_streamer.py`, under the main function at the bottom of the page, you can uncomment multiple lines with the Python multi-line quotes and import the appropriate library to test other example code. For instance, one example basecode is below:
+
+```shell
+    # Example Code #7: Time series plot using function
+    # This code will use TweetVisualizer function to graph the plot
+    """
+    twitter_client = TwitterClient("USUhealthsci")
+    tweets = twitter_client.get_user_timeline_tweets(100)
+    
+    tweet_analyzer = TweetAnalyzer()
+    df = tweet_analyzer.tweets_to_dataframe(tweets) 
+
+    tweet_visualizer = TweetVisualizer()
+    y_values="likes"
+    tweet_visualizer.plot_time_series(df, y_values)
+    """
+```
 
 <!-- ERROR MESSAGES -->
 
