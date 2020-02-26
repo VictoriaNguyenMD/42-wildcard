@@ -143,7 +143,7 @@ If there is an importation error, at the top of the code, write `import ______` 
 
 **Code keeps on running and doesn't stop**
 
-The listener is listening for the tweets. You can type `CTRL + C`. If this does not work, refer to this aritcle on [how to force quit via terminal](https://www.hongkiat.com/blog/force-quit-mac-app/).
+The listener is listening for the tweets. You can type `CTRL + C` or `CTRL + D`. If this doesn't work, try `killall -9 python3.`  If this does not work, refer to this aritcle on [how to force quit via terminal](https://www.hongkiat.com/blog/force-quit-mac-app/).
 
 <!-- REFELCTION -->
 ## Reflection
