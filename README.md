@@ -60,7 +60,7 @@ To visualize the data, we will then derive graphical outputs using the data fram
 
 Below is an example of a Word Cloud developed from the query "COVID19."
 
-<img src="./media/word_cloud.png" alt="COVID19 Word Cloud" width="200px" height="100px"/>
+<img src="./media/word_cloud.png" alt="COVID19 Word Cloud" width="400" height="200"/>
 
 **5. Sentiment Analysis [Bonus]**
 
