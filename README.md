@@ -116,6 +116,8 @@ CONSUMER_SECRET = ""
 
 `python -W ignore tweepy_streamer.py`
 
+Within this `tweepy_streamer.py`, you can uncomment multiple lines and import the appropriate library to text other example code.
+
 <!-- ERROR MESSAGES -->
 
 ## Error Messages

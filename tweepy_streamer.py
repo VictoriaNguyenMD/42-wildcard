@@ -6,7 +6,7 @@
 #    By: vinguyen <vinguyen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/22 23:04:48 by vinguyen          #+#    #+#              #
-#    Updated: 2020/02/26 00:42:31 by vinguyen         ###   ########.fr        #
+#    Updated: 2020/02/26 00:55:44 by vinguyen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -196,7 +196,7 @@ if __name__ == "__main__":
     tweet_visualizer.plot_word_cloud("COVID19", remove=["COVID19"])
     """
 
-    # Example Code #9: Analyzing tweets using TextBlob
+    Example Code #9: Analyzing tweets using TextBlob
     twitter_client = TwitterClient()
     tweet_analyzer = TweetAnalyzer()
 
