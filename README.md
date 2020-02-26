@@ -15,7 +15,7 @@ Twitter, amongst many websites, is an excellent platform to display one's opinio
 
 ## What is the Purpose of This Project?
 
-This Python project will use [Tweepy Library](https://www.tweepy.org/) and [Twitter API](http://docs.tweepy.org/en/latest/api.html#API.search) tools to scrape Twitter tweets in order to create a tweet visualization and sentiment analysis of a healthcare-related topic. After discovering how BlueDot used web scraping to quickly assess the potential outbreak of coronavairus, I became more interested in the applications of data mining and web scraping from nontraditional sources. This project therefore scrapes Twitter tweets, analyzes the emotional state of the collected data, and outputs a graphical display. 
+This Python project will use [Tweepy Library](https://www.tweepy.org/) and [Twitter API](http://docs.tweepy.org/en/latest/api.html#API.search) tools to scrape Twitter tweets in order to create a tweet analysis of healthcare-related topic. After discovering how BlueDot used web scraping to quickly assess the potential outbreak of coronavairus, I became more interested in the applications of data mining and web scraping from nontraditional sources. This project therefore scrapes Twitter tweets to introduce twitter scaping. In addition, there are bonus functions such as analyzing the emotional state of the collected data and outputing graphical displays. 
 
 ## Utilizing a Twitter Scraper to Analyze Healthcare Data
 
@@ -50,7 +50,7 @@ To analyze tweets, you need to install pandas and NumPy. Pandas is a data manipu
 
 <img src="./media/analyzed_tweet_data.png" alt="analyzed_tweet_data.png"/>
 
-**4. Visualizing Tweet Data**
+**4. Visualizing Tweet Data [Bonus]** 
 
 To visualize the data, we will then derive graphical outputs using the data frame obtained from analyzing the tweet. Using the NumPy and pandas, it is easy to manipulate the data and produce a visual display. Below is an example of the Twitter username @USUhealthsci's Likes vs. Retweets over several days.
 
@@ -58,7 +58,11 @@ To visualize the data, we will then derive graphical outputs using the data fram
 
 <img src="./media/USU_time_series_plot.png" alt="USU Time Series Plot"/>
 
-**5. Sentiment Analysis**
+Below is an example of a Word Cloud developed from the query "COVID19."
+
+<img src="./media/word_cloud.png" alt="COVID19 Word Cloud"/>
+
+**5. Sentiment Analysis [Bonus]**
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -100,9 +104,6 @@ CONSUMER_SECRET = ""
 
 `python -W ignore tweepy_streamer.py`
 
-<!-- USAGE EXAMPLES -->
-## Usage
-
 <!-- ERROR MESSAGES -->
 
 ## Error Messages
@@ -117,6 +118,15 @@ You may have made a mistake in copying the Access Tokens from [apps.twitter.com]
 **`Your installed Python is incomplete. Attempting to use lzma compression will result in Runtime Error`**
 
 `brew reinstall xz` is suppoed to have lzma, such that when you use `import lzma`, there should be no errors. However, there is a warning when you run your python code. To silence the warning, run the code using `python -W ignore tweepy_stream.py` 
+
+**tweepy.error.TweepError: Twitter error response: status code = 429**
+The 429 code is returned when a request cannot be served due to reaching the application’s rate limit. You have to wait for the limit to rese. According to the [Twitter Webstite](https://developer.twitter.com/en/docs/basics/rate-limiting), there are two initial buckets available for GET requests: 15 calls every 15 minutes, and 180 calls every 15 minutes.
+
+<!-- REFELCTION -->
+## Reflection
+This code is far from complete but introduced me to the basics of web development. I spent around 75 hours deciding on a project, figuring out how I want to approach the project, looking up resources, coding the project, and then debugging numerous errors. The errors listed above were just a few amongst many errors. 
+
+Some feature endeavors include creating a graphical display to input the query items rather than manually altering the code and including more functions.
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -145,3 +155,4 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 2. [Tweet Visualization and Sentiment Analysis](https://www.youtube.com/watch?v=1gQ6uG5Ujiw) @vprusso
 3. [Tweepy Documentation](http://docs.tweepy.org/en/latest/)
 4. [Python Environment](https://realpython.com/intro-to-pyenv/#why-use-pyenv)
+5. [Tweepy Error Messages](https://developer.twitter.com/en/docs/basics/response-codes)
