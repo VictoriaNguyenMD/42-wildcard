@@ -6,7 +6,7 @@
 #    By: vinguyen <vinguyen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/22 23:04:48 by vinguyen          #+#    #+#              #
-#    Updated: 2020/02/23 23:21:57 by vinguyen         ###   ########.fr        #
+#    Updated: 2020/02/25 23:57:44 by vinguyen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,15 +15,10 @@ from tweepy import Stream
 
 import twitter_credentials
 
+from tweet_visualizer import TweetVisualizer
 from tweepy_authenticator import TwitterAuthenticator
 from tweepy_client import TwitterClient
 from tweet_analyzer import TweetAnalyzer
-
-from wordcloud import WordCloud
-
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
 
 # <------------ TWITTER STREAMER ------------>
 """
@@ -79,42 +74,6 @@ class TwitterListener(StreamListener):
             return False
         print(status)
         
-from tweepy import Cursor
-from tweepy import API
-class TweetVisualizer():
-    """
-    For visualizing the tweet data after the dataframe was created
-    """
-    def __init__(self, twitter_user = None):
-        self.auth = TwitterAuthenticator().authenticate_twitter_app()
-        self.twitter_client = API(self.auth)
-    """
-    Factors over several days (eg. Likes over several days)
-    """
-    def get_average_tweet_length(self, df):
-        return np.mean(df["len"])
-    
-    def get_max_retweets(self, df):
-        return np.max(df["retweets"])
-    
-    def plot_time_series(self, df, y_values):  
-        time_y = pd.Series(data=df[y_values].values, index=df["date"])
-        time_y.plot(figsize=(16,4), label=y_values, legend=True, title="Time Series: " + y_values + " vs. time")  
-    
-    def plot_word_cloud(self, query, limit=1000, remove = []):
-        text = ""
-        for tweet in Cursor(self.twitter_client.search, q=query, lang="en").items(limit):
-            text += tweet.text.lower()
-        removeWords = ["https","co", "com", ".", "mama", "may", "follow"]
-        removeWords += remove
-        for word in removeWords:
-            text = text.replace(word, "")
-        wordcloud = WordCloud().generate(text)
-        plt.figure(figsize=(12,6))
-        plt.imshow(wordcloud, interpolation='bilinear')
-        plt.axis("off")
-        plt.show()
-
 if __name__ == "__main__":
 
     # Example Code #1: Using Streamer, Listener, Authenticator. Unlimited # of Tweets 
@@ -228,6 +187,6 @@ if __name__ == "__main__":
 
     # Example Code #8: Word Cloud plot using function
     # This code will use TweetVisualizer function to graph the plot
-
+    
     tweet_visualizer = TweetVisualizer()
-    tweet_visualizer.plot_word_cloud("42SiliconValley")
+    tweet_visualizer.plot_word_cloud("COVID19", remove=["COVID19"])
